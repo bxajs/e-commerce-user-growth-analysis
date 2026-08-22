@@ -6,6 +6,7 @@
 -- 输出：年龄性别、地区、设备、新老用户的用户规模与占比
 -- =============================================
 
+-- ========== 1. 年龄段用户分布及占比 ==========
 SELECT
     CASE
         WHEN age <= 20 THEN '20岁及以下'
@@ -18,6 +19,7 @@ SELECT
 FROM user_action_clean
 GROUP BY `年龄段`;
 
+-- ========== 2. 地区用户分布及占比 ==========
 SELECT
     market AS `地区`,
     COUNT(*) AS `用户数`,
@@ -25,6 +27,7 @@ SELECT
 FROM user_action_clean
 GROUP BY market;
 
+-- ========== 3. 访问设备用户分布及占比 ==========
 SELECT
     device AS `访问设备`,
     COUNT(*) AS `用户数`,
@@ -32,11 +35,10 @@ SELECT
 FROM user_action_clean
 GROUP BY device;
 
+-- ========== 4. 新老用户分布及占比 ==========
 SELECT
     new_user AS `新老用户`,
     COUNT(*) AS `用户数`,
     CONCAT(ROUND(COUNT(*)/SUM(COUNT(*))OVER()*100, 2), '%') AS `占比`
 FROM user_action_clean
 GROUP BY new_user;
-
-
