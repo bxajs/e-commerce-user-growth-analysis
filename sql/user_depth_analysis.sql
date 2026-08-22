@@ -1,10 +1,19 @@
+-- =============================================
+-- 文件：user_depth_analysis.sql
+-- 功能：用户访问深度与转化率关联分析
+-- 依赖表：user_depth_analysis
+-- 对应看板：Page 3 转化分析 - 用户行为深度 vs 转化率
+-- 输出：不同访问深度层级的用户数、购买用户数、对应转化率
+-- =============================================
+
+-- ========== 1. 各访问深度层级用户数量统计 ==========
 SELECT
     depth_level,
     COUNT(new_user) AS user_count
 FROM user_depth_analysis
 GROUP BY depth_level;
 
-
+-- ========== 2. 访问深度‑购买转化统计，自定义业务排序 ==========
 SELECT
     depth_level,
     COUNT(new_user) AS total_users,
