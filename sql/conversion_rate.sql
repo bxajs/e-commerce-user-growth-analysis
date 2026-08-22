@@ -6,6 +6,7 @@
 -- 输出：渠道、地区、性别三个维度的用户规模与转化率
 -- =============================================
 
+-- ========== 1. 流量渠道维度转化率统计 ==========
 SELECT
     source AS `流量渠道`,
     COUNT(*) AS `总用户数`,
@@ -13,6 +14,7 @@ SELECT
 FROM user_action_clean
 GROUP BY source;
 
+-- ========== 2. 地区维度转化率统计 ==========
 SELECT
     market AS `地区`,
     COUNT(*) AS `总用户数`,
@@ -20,6 +22,7 @@ SELECT
 FROM user_action_clean
 GROUP BY market;
 
+-- ========== 3. 性别维度转化率统计 ==========
 SELECT
     sex AS `性别`,
     COUNT(*) AS `总用户数`,
